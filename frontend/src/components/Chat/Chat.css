@@ -13,7 +13,7 @@
 
 .active_chat{
     position: fixed !important;
-    top: 35%;
+    top: 10%;
     left: 65%;
     width: 27%;
     z-index: 99999;

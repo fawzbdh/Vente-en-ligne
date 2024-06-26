@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "Nguyenvansang1997!@",
-    "database": "shopping_FS",
-    "host": "127.0.0.1",
+    "username": "fawz",
+    "password": null,
+    "database": "shop",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {

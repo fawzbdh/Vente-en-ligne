@@ -27,27 +27,27 @@ export const getListProduct = async (dispatch, params) => {
     const response = await axios.get(`${DOMAIN}/api/v1/products/`, { params });
     dispatch(getProductSuccess(response.data));
   } catch (err) {
-    dispatch(getProductFailed(err));
+    dispatch(getProductFailed(err.response.data)); // Capture de l'erreur avec response.data
   }
 };
 
-export const getListProductPanigation = async (dispatch, params) => {
+export const getListProductPanigation = async (dispatch, queryParams) => {
   dispatch(getProductPanigationStart());
   try {
-    const response = await axios.get(`${DOMAIN}/api/v1/products/${params}`);
+    const response = await axios.get(`${DOMAIN}/api/v1/products/`, { params: queryParams });
     dispatch(getProductPanigationSuccess(response.data));
   } catch (err) {
-    dispatch(getProductPanigationFailed(err));
+    dispatch(getProductPanigationFailed(err.response.data)); // Capture de l'erreur avec response.data
   }
 };
 
-export const getListProductFilter = async (dispatch, params) => {
+export const getListProductFilter = async (dispatch, queryParams) => {
   dispatch(getProductFilterStart());
   try {
-    const response = await axios.get(`${DOMAIN}/api/v1/products/${params}`);
+    const response = await axios.get(`${DOMAIN}/api/v1/products/`, { params: queryParams });
     dispatch(getProductFilterSuccess(response.data));
   } catch (err) {
-    dispatch(getProductFilterFailed(err));
+    dispatch(getProductFilterFailed(err.response.data)); // Capture de l'erreur avec response.data
   }
 };
 
@@ -57,7 +57,7 @@ export const getProductById = async (dispatch, id) => {
     const response = await axios.get(`${DOMAIN}/api/v1/products/${id}`);
     dispatch(getProductDetailSuccess(response.data));
   } catch (err) {
-    dispatch(getProductDetailFailed(err.response.data));
+    dispatch(getProductDetailFailed(err.response.data)); // Capture de l'erreur avec response.data
   }
 };
 
@@ -67,7 +67,7 @@ export const createProduct = async (dispatch, params) => {
     await axios.post(`${DOMAIN}/api/v1/products`, params);
     dispatch(createProductSucess());
   } catch (err) {
-    dispatch(createProductFailed(err));
+    dispatch(createProductFailed(err.response.data)); // Capture de l'erreur avec response.data
   }
 };
 
@@ -77,6 +77,6 @@ export const deleteProduct = async (dispatch, id) => {
     await axios.delete(`${DOMAIN}/api/v1/products/${id}`);
     dispatch(deleteProductSuccess());
   } catch (err) {
-    dispatch(deleteProductFailed(err));
+    dispatch(deleteProductFailed(err.response.data)); // Capture de l'erreur avec response.data
   }
 };

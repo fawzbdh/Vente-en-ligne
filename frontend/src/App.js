@@ -1,21 +1,35 @@
-import "./App.css";
-import "./css/custom.css";
-import "./css/style.default.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
 import { Provider } from "react-redux";
-import { store, persistor } from "./redux/store";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { PersistGate } from "redux-persist/integration/react";
-import publicRoutes from "./Routes/routes";
-import DefaultLayout from "./Layouts/DefaultLayout";
-import HeaderAdmin from "./components/Admin/HeaderAdmin";
-import adminRoutes from "./Routes/adminRoutes";
-import AdminLayout from "./Layouts/AdminLayout";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { PersistGate } from "redux-persist/integration/react";
+import { io } from "socket.io-client";
+import AdminLayout from "./Layouts/AdminLayout";
+import DefaultLayout from "./Layouts/DefaultLayout";
+import adminRoutes from "./Routes/adminRoutes";
+import publicRoutes from "./Routes/routes";
+import { persistor, store } from "./redux/store";
 
 function App() {
+  useEffect(() => {
+    const socket = io("http://localhost:8000", { withCredentials: true });
+
+    // Example event listeners
+    socket.on("connect", () => {
+      console.log("Connected to Socket.io server");
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Disconnected from Socket.io server");
+    });
+
+    // Clean up socket connection when component unmounts
+    return () => {
+      socket.disconnect();
+    };
+  }, []); // Empty dependency array ensures this effect runs only once
+
   return (
     <div className="App">
       <BrowserRouter>

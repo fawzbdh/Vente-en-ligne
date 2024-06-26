@@ -1,15 +1,15 @@
+import Pagination from "@mui/material/Pagination";
+import { useFormik } from "formik";
+import queryString from "query-string";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import queryString from "query-string";
+import * as Yup from "yup";
 import {
   createProduct,
   deleteProduct,
   getListProductFilter,
   getListProductPanigation,
 } from "../../services/API/productApi";
-import Pagination from "@mui/material/Pagination";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 
 export default function ProductsAdmin() {
   const productPanigation = useSelector(
@@ -247,62 +247,56 @@ export default function ProductsAdmin() {
                                     </p>
                                   </div>
                                   <div className="form-group">
-                                    <label htmlFor="img1">img1</label>
+                                    <label htmlFor="img1">Image 1</label>
                                     <input
                                       name="img1"
-                                      type="text"
-                                      className="form-control"
+                                      type="file"
+                                      className="form-control-file"
                                       id="img1"
-                                      placeholder="Enter img1"
-                                      onChange={formik.handleChange}
+                                      onChange={(event) => formik.setFieldValue("img1", event.currentTarget.files[0])}
                                     />
-                                    <p className="text-2xs text-danger">
-                                      {formik.errors.img1}
-                                    </p>
+                                  <p className="text-2xs text-danger">
+                                    {formik.errors.img1}
+                                  </p>
                                   </div>
                                   <div className="form-group">
-                                    <label htmlFor="img2">img2</label>
+                                    <label htmlFor="img2">Image 1</label>
                                     <input
                                       name="img2"
-                                      type="text"
-                                      className="form-control"
+                                      type="file"
+                                      className="form-control-file"
                                       id="img2"
-                                      placeholder="Enter img2"
-                                      onChange={formik.handleChange}
+                                      onChange={(event) => formik.setFieldValue("img2", event.currentTarget.files[0])}
                                     />
-                                    <p className="text-2xs text-danger">
-                                      {formik.errors.img2}
-                                    </p>
-                                  </div>
+                                  <p className="text-2xs text-danger">
+                                    {formik.errors.img1}
+                                  </p>
                                 </div>
-                                <div className="col-6">
-                                  <div className="form-group">
-                                    <label htmlFor="img3">img3</label>
+                                <div className="form-group">
+                                    <label htmlFor="img3">Image 1</label>
                                     <input
                                       name="img3"
-                                      type="text"
-                                      className="form-control"
+                                      type="file"
+                                      className="form-control-file"
                                       id="img3"
-                                      placeholder="Enter img3"
-                                      onChange={formik.handleChange}
+                                      onChange={(event) => formik.setFieldValue("img3", event.currentTarget.files[0])}
                                     />
-                                    <p className="text-2xs text-danger">
-                                      {formik.errors.img3}
-                                    </p>
+                                  <p className="text-2xs text-danger">
+                                    {formik.errors.img1}
+                                  </p>
                                   </div>
                                   <div className="form-group">
-                                    <label htmlFor="img4">img4</label>
+                                    <label htmlFor="img4">Image 1</label>
                                     <input
                                       name="img4"
-                                      type="text"
-                                      className="form-control"
+                                      type="file"
+                                      className="form-control-file"
                                       id="img4"
-                                      placeholder="Enter img4"
-                                      onChange={formik.handleChange}
+                                      onChange={(event) => formik.setFieldValue("img4", event.currentTarget.files[0])}
                                     />
-                                    <p className="text-2xs text-danger">
-                                      {formik.errors.img4}
-                                    </p>
+                                  <p className="text-2xs text-danger">
+                                    {formik.errors.img1}
+                                  </p>
                                   </div>
                                   <div className="form-group">
                                     <label htmlFor="category">category</label>
@@ -436,7 +430,7 @@ export default function ProductsAdmin() {
       </div>
       <footer className="footer text-center text-muted">
         All Rights Reserved by Adminmart. Designed and Developed by{" "}
-        <a href="">Nguyễn Sang</a>.
+        <a href="">ben dhiab fawz</a>.
       </footer>
     </div>
   );
